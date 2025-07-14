@@ -33,6 +33,7 @@ export default function Navigationbar() {
         )}
         <li>
           <Link to="/signupPage" style={{ textDecoration: "none"}}>회원가입</Link>
+          <Link to="/profilePage" style={{ textDecoration: "none"}}>프로필</Link>
         </li>
       </ul>
     </nav>

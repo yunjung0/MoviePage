@@ -21,42 +21,44 @@ function Signup() {
     };
 
     return (
-        <div className='SignupContainer'>
-            <h2 className='Title'>회원가입</h2>
-            <form onSubmit={handleRegister}>
-                <input className='Input'
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="username"
-                    required
-                />
+        <div className='box'>
+            <div className='SignupContainer'>
+                <h2 className='Title'>회원가입</h2>
+                <form onSubmit={handleRegister}>
+                    <input className='Input'
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="username"
+                        required
+                    />
 
-                <input className='Input'
-                    type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="비밀번호"
-                    required
-                />
+                    <input className='Input'
+                        type="text"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호"
+                        required
+                    />
 
-                <input className='Input'
-                    type="text"
-                    value={password2}
-                    onChange={(e) => setPassword2(e.target.value)}
-                    placeholder="비밀번호 확인"
-                    required
-                />
+                    <input className='Input'
+                        type="text"
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
+                        placeholder="비밀번호 확인"
+                        required
+                    />
 
-                <input className='Input'
-                    type="nickname"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
-                    placeholder="닉네임"
-                    required
-                />
-                <input type="submit" className='Button' value="회원가입" />
-            </form>
+                    <input className='Input'
+                        type="nickname"
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        placeholder="닉네임"
+                        required
+                    />
+                    <input type="submit" className='Button' value="회원가입" />
+                </form>
+            </div>
         </div>
     );
 }

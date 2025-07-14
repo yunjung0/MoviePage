@@ -1,5 +1,4 @@
 .movie-card {
-  width: 200px;
   padding: 10px;
   margin: 10px;
   background: rgb(255, 255, 255);
@@ -11,11 +10,14 @@
 }
 
 .movie-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  background: #000000;
-}
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 정확히 4개씩 */
+    gap: 15px; /* 카드 사이 간격 */
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
 .search-bar {
   display: flex;

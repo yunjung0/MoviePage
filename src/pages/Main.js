@@ -37,7 +37,7 @@ export default function Main() {
   return (
     <div>
       <div className="search-bar">
-        <input
+        <input className="search-input"
           type="text"
           placeholder="영화 제목을 입력하세요"
           value={search}

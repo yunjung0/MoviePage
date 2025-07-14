@@ -18,7 +18,7 @@ export default function Navigationbar() {
 
   return (
     <nav className="Navigation">
-      <div className="logo"><Link to='/' style={{ textDecoration: "none"}}>영화</Link></div>
+      <div className="logo"><Link to='/' style={{ textDecoration: "none"}}>부귀영화</Link></div>
       <ul>
         {authenticated ? (
           <li>
@@ -31,10 +31,8 @@ export default function Navigationbar() {
             <Link to="/loginPage" style={{ textDecoration: "none"}}>로그인</Link>
           </li>
         )}
-        <li>
-          <Link to="/signupPage" style={{ textDecoration: "none"}}>회원가입</Link>
-          <Link to="/profilePage" style={{ textDecoration: "none"}}>프로필</Link>
-        </li>
+          <li><Link to="/signupPage" style={{ textDecoration: "none"}}>회원가입</Link></li>
+          <li><Link to="/profilePage" style={{ textDecoration: "none"}}>프로필</Link></li>
       </ul>
     </nav>
   );

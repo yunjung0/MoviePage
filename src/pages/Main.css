@@ -1,0 +1,28 @@
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .movie-card {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+.search-bar {
+  display: flex;
+}

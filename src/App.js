@@ -5,8 +5,7 @@ import { signup } from './api/SignupApi';
 import Main from "./pages/Main";
 import api from "./api/Api"
 import Signup from './components/Signup';
-// import SignupPage from './pages/SignupPage';
-import LoginPage from './pages/LoginPage';
+import Login from './components/Login';
 import Navigationbar from './components/Navigation';
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path='/signupPage' element= {<Signup />} />
-        <Route path='/loginPage' element= {<LoginPage />} />
+        <Route path='/loginPage' element= {<Login />} />
       </Routes>
     </div>
   );

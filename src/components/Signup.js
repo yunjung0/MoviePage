@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { signup } from '../api/SignupApi';
+import '../components/Signup.css';
 
 
 function Signup() {
@@ -26,7 +27,7 @@ function Signup() {
                     type="text"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="usename"
+                    placeholder="username"
                     required
                 />
 

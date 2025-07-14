@@ -11,8 +11,8 @@
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 정확히 4개씩 */
-    gap: 15px; /* 카드 사이 간격 */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; 
     padding: 20px;
     margin: 0;
     width: 100%;
@@ -22,21 +22,32 @@
 .search-bar {
   display: flex;
   justify-content: center;
-  margin: 40px 0 20px;
+  margin: 20px 0;
 }
 
 .search-input {
-  width: 40%;
-  max-width: 400px;
-  padding: 10px 15px;
+  width: 100%;
+  padding: 10px 10px 10px 18px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 20px;
   outline: none;
-  transition: border-color 0.2s ease;
 }
 
+.search-wrapper {
+  position: relative;
+  width: 300px;
+}
 
 .search-input:focus {
   border-color: #000000;
+}
+
+.search-icon {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
 }

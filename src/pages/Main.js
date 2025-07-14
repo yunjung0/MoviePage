@@ -53,12 +53,10 @@ export default function Main() {
       </div>
 
       <div className="movie-grid">
-        {movies.map((movie) => (
-          <card
-            key={movie.id}
-            id={movie.id}
-            title={movie.title_kor}
-            poster={movie.poster_url}
+        {movies.map((movie, index) => (
+          <MovieCard
+            key={index} 
+            movie={movie}
           />
         ))}
       </div>

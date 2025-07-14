@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import './Detail.css';
 
 export default function Detail() {
     const { id } = useParams();
@@ -55,18 +56,28 @@ export default function Detail() {
 
     return (
         <div className="movie-detail">
-            <img src={movie.poster} alt={movie.title} />
-            <div className="movie-info">
-                <h2>{movie.title_kor} ({movie.title_eng})</h2>
-                <p><strong>⭐ {movie.average_rating} / 5</strong></p>
-                <p><strong>감독:</strong> {movie.director?.name || "정보 없음"}</p>
-                <p><strong>장르 / 상영시간:</strong> {movie.genre || "정보 없음"}, {movie.showtime}분</p>
-                <p><strong>개봉일:</strong> {movie.release_date}</p>
-                <p><strong>출연:</strong> {movie.actors?.map(actor => actor.name).join(", ")}</p>
-                <p><strong>줄거리:</strong> {movie.plot}</p>
+            <div className="movie-main">
+            <img
+    src={
+        movie.poster_url
+        ? movie.poster_url
+        : "https://via.placeholder.com/300x450?text=No+Image"
+    }
+    alt={movie.title_kor}
+    className="movie-img"
+    />
+                <div className="movie-info">
+                    <h2>{movie.title_kor} ({movie.title_eng})</h2>
+                    <p><strong>⭐ {movie.average_rating} / 5</strong></p>
+                    <p><strong>감독:</strong> {movie.director?.name || "정보 없음"}</p>
+                    <p><strong>장르 / 상영시간:</strong> {movie.genre || "정보 없음"}, {movie.showtime}분</p>
+                    <p><strong>개봉일:</strong> {movie.release_date}</p>
+                    <p><strong>출연:</strong> {movie.actors?.map(actor => actor.name).join(", ")}</p>
+                    <p><strong>줄거리:</strong> {movie.plot}</p>
+                </div>
             </div>
             <div className="comment-section">
-                <h3>🗯Comment</h3>
+                <h3>🗯 Comment</h3>
                 {movie.comments?.length > 0 ? (
                     movie.comments.map((comment) => (
                         <div key={comment.id} >

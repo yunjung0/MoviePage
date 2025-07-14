@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {login} from '../api/SignupApi';
-import './components/Login.css';
+import '../components/Login.css';
+
 
 
 function Login() {
@@ -23,25 +24,27 @@ function Login() {
     };
 
     return (
-        <div className='LoginContaine'>
-            <div className='Title'>로그인</div>
-            <form onSubmit={handleLogin}>
-                <input className='Input'
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="아이디"
-                    required
-                />
-                <input className='Input'
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="비밀번호"
-                    required
-                />
-                <input type="submit" className='Button'>로그인</input>
-            </form>
+        <div className='Login'>
+            <div className='LoginContainer'>
+                <div className='Title'>로그인</div>
+                <form onSubmit={handleLogin}>
+                    <input className='Input'
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="아이디"
+                        required
+                    />
+                    <input className='Input'
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호"
+                        required
+                    />
+                    <input type="submit" className='Button' value="로그인"/>
+                </form>
+            </div>
         </div>
     );
 }

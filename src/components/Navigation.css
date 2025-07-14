@@ -1,20 +1,26 @@
-.Navigation{
+.Navigation {
   display: flex;
   background-color: black;
   align-items: center;
-  padding: 3px;
-  list-style: none;
-   }
+  padding: 10px;
+}
 
-.Navigation .logo{
+.Navigation .logo {
   font-size: x-large;
   font-weight: bolder;
-  padding-left: 20px;
+  padding-left: 40px;
   -webkit-text-fill-color: white;
 }
 
-.Navigation .li{
-  float: left;
-  padding-left: 20px;
+.Navigation ul {
+  display: flex;
+  padding-left: 1200px;
+  margin: 0;
+  list-style: none;
   -webkit-text-fill-color: white;
+}
+
+.Navigation ul li {
+  padding-left: 30px;
+  color: white;
 }

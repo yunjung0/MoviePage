@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function Detail() {
-    const { movieId } = useParams();
-    const nevigate = useNavigate();
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [movie, setMovie] = useState(null);
     const [newComment, setNewComment] = useState('');
     const isLoggedIn = localStorage.getItem("token") !== null;
+
 
     useEffect(() => {
         fetchMovieDetail();
@@ -14,7 +15,7 @@ export default function Detail() {
 
     const fetchMovieDetail = async () => {
         try {
-            const res = await fetch(`http://43.200.28.219:1313/movies/detail/${movieId}/`);
+            const res = await fetch(`https://thehotpotato.store/movies/${id}/`);
             const data = await res.json();
             setMovie(data);
           } catch (err) {
@@ -28,7 +29,7 @@ export default function Detail() {
         }
 
         try {
-            const res = await fetch(`http://43.200.28.219:1313/movies/${movieId}/comments/`, {
+            const res = await fetch(`https://thehotpotato.store/movies/${id}/comments/`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -58,15 +59,15 @@ export default function Detail() {
             <div className="movie-info">
                 <h2>{movie.title_kor} ({movie.title_eng})</h2>
                 <p><strong>⭐ {movie.average_rating} / 5</strong></p>
-                <p><strong>감독:</strong> {movie.director.name}</p>
-                <p><strong>장르 / 상영시간:</strong> {movie.genre}, {movie.showtime}분</p>
+                <p><strong>감독:</strong> {movie.director?.name || "정보 없음"}</p>
+                <p><strong>장르 / 상영시간:</strong> {movie.genre || "정보 없음"}, {movie.showtime}분</p>
                 <p><strong>개봉일:</strong> {movie.release_date}</p>
-                <p><strong>출연:</strong> {movie.actors.map(actor => actor.name).join(", ")}</p>
+                <p><strong>출연:</strong> {movie.actors?.map(actor => actor.name).join(", ")}</p>
                 <p><strong>줄거리:</strong> {movie.plot}</p>
             </div>
             <div className="comment-section">
                 <h3>🗯Comment</h3>
-                {movie.comments.length > 0 ? (
+                {movie.comments?.length > 0 ? (
                     movie.comments.map((comment) => (
                         <div key={comment.id} >
                             <strong>{comment.user.username}</strong>: {comment.content}

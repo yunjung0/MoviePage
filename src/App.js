@@ -3,11 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { signup } from './api/SignupApi';
 import Main from "./pages/Main";
-import api from "./api/Api"
+//import api from "./api/Api"
 import Signup from './components/Signup';
 // import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import Navigationbar from './components/Navigation';
+import Detail from "./pages/Detail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Navigationbar />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/movie/:id" element={<Detail />} />
         <Route path='/signupPage' element= {<Signup />} />
         <Route path='/loginPage' element= {<LoginPage />} />
       </Routes>

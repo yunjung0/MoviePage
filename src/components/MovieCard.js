@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 
-
-export default function MovieCard({movie}) {
+export default function MovieCard({ movie }) {
+  
   return (
-    <div className="movie-card">
-      <img src={movie.poster_url} alt={movie.title_kor} className="Movie-Poster"/>
+    <Link to={`/movie/${movie.id}`} className="movie-card">
+      <img src={movie.poster_url} alt={movie.title_kor} className='movie-poster'/>
       <p>{movie.title_kor}</p>
-    </div>
+    </Link>
   );
 }

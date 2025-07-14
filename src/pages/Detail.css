@@ -33,12 +33,16 @@
 .comment-section {
   width: 100%;
   margin-top: 40px;
+  padding-left: 45px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
 }
 
 .comment-form {
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  max-width: 600px;
 }
 
 .comment-form input {

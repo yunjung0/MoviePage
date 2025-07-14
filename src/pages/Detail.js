@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import './Detail.css';
 
@@ -9,20 +9,20 @@ export default function Detail() {
     const [newComment, setNewComment] = useState('');
     const isLoggedIn = localStorage.getItem("token") !== null;
 
+    const fetchMovieDetail = useCallback(async () => {
+    try {
+        const res = await fetch(`https://thehotpotato.store/movies/${id}/`);
+        const data = await res.json();
+        setMovie(data);
+    } catch (err) {
+        console.error("영화 상세 정보 불러오기 실패:", err);
+    }
+}, [id]);
 
     useEffect(() => {
-        fetchMovieDetail();
-    }, []);
+    fetchMovieDetail();
+}, [fetchMovieDetail]);
 
-    const fetchMovieDetail = async () => {
-        try {
-            const res = await fetch(`https://thehotpotato.store/movies/${id}/`);
-            const data = await res.json();
-            setMovie(data);
-          } catch (err) {
-            console.error("영화 상세 정보 불러오기 실패:", err);
-          }
-    };
     const handleCommentSubmit = async () => {
         if (!isLoggedIn) {
             navigate("/login");
@@ -103,7 +103,7 @@ export default function Detail() {
                         댓글을 작성하려면{" "}
                         <span
                             style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
-                            onClick={() => navigate("/login")}
+                            onClick={() => navigate("/loginPage")}
                         >
                             로그인
                         </span>

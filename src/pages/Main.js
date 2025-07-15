@@ -8,6 +8,8 @@ export default function Main() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
+  const pagedMovies = movies.slice((page - 1) * 10, page * 10);
+
   
 
   useEffect(() => {
@@ -49,13 +51,13 @@ export default function Main() {
         </div>
       </div>
       <div className="movie-grid">
-      {movies.map((movie, index) => (
+      {pagedMovies.map((movie, index) => (
         <MovieCard key={index} movie={movie} />
       ))}
       </div>
       <Pagination
         currentPage={page}
-        totalCount={totalCount}
+        totalCount={movies.length}
         itemsPerPage={10}
         onPageChange={handlePageChange}
       />

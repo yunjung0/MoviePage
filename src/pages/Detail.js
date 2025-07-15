@@ -67,7 +67,7 @@ export default function Detail() {
     className="movie-img"
     />
                 <div className="movie-info">
-                    <h2>{movie.title_kor} ({movie.title_eng})</h2>
+                    <h1>{movie.title_kor} ({movie.title_eng})</h1>
                     <p><strong>⭐ {movie.average_rating} / 5</strong></p>
                     <p><strong>감독:</strong> {movie.director?.name || "정보 없음"}</p>
                     <p><strong>장르 / 상영시간:</strong> {movie.genre || "정보 없음"}, {movie.showtime}분</p>
@@ -100,7 +100,7 @@ export default function Detail() {
                 {movie.comments?.length > 0 ? (
                     movie.comments.map((comment) => (
                         <div key={comment.id} >
-                            <strong>{comment.user.username}</strong>: {comment.content}
+                            <strong>{comment.author.username}</strong>: {comment.content}
                         </div>
                     ))
                 ) : (

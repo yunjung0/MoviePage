@@ -29,16 +29,16 @@ function UserProfile({ userId }) {
     }
   };
 
-  const handleDelete = async () => {
-    if (window.confirm('정말로 탈퇴하시겠습니까?')) {
-      try {
-        await deleteUser(userId);
-        alert('탈퇴가 완료되었습니다.');
-      } catch (err) {
-        alert('탈퇴 권한이 없거나 오류가 발생했습니다.');
-      }
-    }
-  };
+  // const handleDelete = async () => {
+  //   if (window.confirm('정말로 탈퇴하시겠습니까?')) {
+  //     try {
+  //       await deleteUser(userId);
+  //       alert('탈퇴가 완료되었습니다.');
+  //     } catch (err) {
+  //       alert('탈퇴 권한이 없거나 오류가 발생했습니다.');
+  //     }
+  //   }
+  // };
 
   if (!profile) return <div className='loading'>로딩 중...</div>;
 
@@ -65,7 +65,7 @@ function UserProfile({ userId }) {
           </>
         )}
       </p>
-      <button onClick={handleDelete} style={{ color: 'red' }}>회원 탈퇴</button>
+      {/* <button onClick={handleDelete} style={{ color: 'red' }}>회원 탈퇴</button> */}
     </div>
   );
 }

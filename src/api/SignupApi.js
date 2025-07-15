@@ -53,7 +53,7 @@ export const updateUserNickname = async (nickname) => {
   return res.data;
 };
 
-// 회원 탈퇴
-export const deleteUser = async (userId) => {
-  await api.delete(`/users/${userId}/`);
-};
+// // 회원 탈퇴
+// export const deleteUser = async (userId) => {
+//   await api.delete(`/users/${userId}/`);
+// };

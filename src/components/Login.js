@@ -6,7 +6,7 @@ import '../components/Login.css';
 
 
 function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await login(username, password);
+            const res = await login(email, password);
             console.log('로그인 성공:', res);
             alert('로그인 성공!');
             navigate('/')
@@ -30,9 +30,9 @@ function Login() {
                 <form onSubmit={handleLogin}>
                     <input className='Input'
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="아이디"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="이메일"
                         required
                     />
                     <input className='Input'

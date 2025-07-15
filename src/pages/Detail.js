@@ -74,6 +74,7 @@ export default function Detail() {
                     <p><strong>개봉일:</strong> {movie.release_date}</p>
                     <p><strong>출연:</strong> {movie.actors?.map(actor => actor.name).join(", ")}</p>
                     <p><strong>줄거리:</strong> {movie.plot}</p>
+                    
                 </div>
             </div>
             <div className="comment-section">

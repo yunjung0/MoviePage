@@ -1,12 +1,12 @@
 import api from './Api';
 
 //회원가입
-export const signup = async (username, password, password2, nickname) => {
+export const signup = async (email, password,username, nickname) => {
   try {
         const res = await api.post('/auth/registration/', {
-            username,
+            email,
             password,
-            password2,
+            username,
             nickname
         });
         return res.data;
@@ -16,10 +16,10 @@ export const signup = async (username, password, password2, nickname) => {
 };
 
 //로그인
-export const login = async (username, password) => {
+export const login = async (email, password) => {
     try {
         const res = await api.post('/auth/login/', {
-            username,
+            email,
             password,
         });
         if (res.data && res.data.access) {

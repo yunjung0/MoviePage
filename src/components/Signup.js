@@ -6,13 +6,13 @@ import '../components/Signup.css';
 function Signup() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [password2, setPassword2] = useState('');
+    const [email, setEmail] = useState('');
     const [nickname, setNickname] = useState('');
 
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const res = await signup(username, password, password2, nickname);
+            const res = await signup(username, password, email, nickname);
             console.log('회원가입 성공:', res);
             alert('회원가입이 완료되었습니다! 로그인해주세요.');
         } catch (err) {
@@ -35,17 +35,17 @@ function Signup() {
 
                     <input className='Input'
                         type="text"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="비밀번호"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="이메일"
                         required
                     />
 
                     <input className='Input'
                         type="text"
-                        value={password2}
-                        onChange={(e) => setPassword2(e.target.value)}
-                        placeholder="비밀번호 확인"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호"
                         required
                     />
 

@@ -74,7 +74,25 @@ export default function Detail() {
                     <p><strong>개봉일:</strong> {movie.release_date}</p>
                     <p><strong>출연:</strong> {movie.actors?.map(actor => actor.name).join(", ")}</p>
                     <p><strong>줄거리:</strong> {movie.plot}</p>
-                    
+
+                    {/* 출연진 사진 */}
+                    <div className="actor-photos">
+                        <h4>출연진</h4>
+                        <div className="actor-list">
+                            {movie.actors?.map(actor => (
+                            <div key={actor.id} className="actor-item">
+                                <img
+                                src={actor.image_url ? actor.image_url : "https://via.placeholder.com/80x110?text=No+Image"}
+                                alt={actor.name}
+                                className="actor-img"
+                                />
+                                <div className="actor-name">{actor.name}</div>
+                                <div className="actor-character">{actor.character}</div>
+                            </div>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div className="comment-section">

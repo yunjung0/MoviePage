@@ -67,3 +67,33 @@
 .comment-form button:hover {
   background-color: #333;
 }
+
+/* 출연진 사진 */
+.actor-photos {
+  margin-top: 20px;
+}
+.actor-list {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.actor-item {
+  text-align: center;
+  width: 90px;
+}
+.actor-img {
+  width: 100px;
+  height: 137.5px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #eee;
+}
+.actor-name {
+  margin-top: 6px;
+  font-size: 0.95em;
+}
+.actor-character {
+  font-size: 0.85em;
+  color: #888;
+}
+

@@ -1,4 +1,5 @@
 .footer{
+<<<<<<< HEAD
     bottom: 0;
     width: 100%;
     height: 60px;
@@ -57,3 +58,40 @@
     height: 40px;
     cursor: pointer;
   }
+=======
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  color: #9f9f9f;
+  margin-top: 30px;
+}
+
+
+.footer-box{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.footer-date p{
+  text-align: center;
+}
+
+.footer-icon {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-icon img {
+  width: 40px;
+  height: 40px;
+}
+>>>>>>> efe5b8d25c21dd1adebcd947140a476d4d3259fc

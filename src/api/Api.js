@@ -1,26 +1,29 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://<your-server-address>/api',
+    baseURL: " http://movielike.store/api",
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('access_token');
     if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-});
+  },
+  (err) => Promise.reject(err)
+);
 
 api.interceptors.response.use(
-    (response) => response,
+    (res) => res,
     (error) => {
-        if (error.response?.status === 401) {
-            localStorage.removeItem('token');
-            window.location.href = '/login';
+        if (error.res?.status === 401) {
+            localStorage.removeItem('access_token');
+            window.location.href = '/loginPage';
         }
         return Promise.reject(error);
     }

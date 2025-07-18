@@ -9,7 +9,11 @@ import Login from './components/Login';
 import Navigationbar from './components/Navigation';
 import UserProfile from './components/Profile';
 import Detail from "./pages/Detail";
+<<<<<<< HEAD
 import Footer from "./components/Footer";
+=======
+import Footer from './components/Footer';
+>>>>>>> efe5b8d25c21dd1adebcd947140a476d4d3259fc
 
 
 function App() {

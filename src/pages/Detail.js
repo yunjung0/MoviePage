@@ -11,7 +11,7 @@ export default function Detail() {
 
     const fetchMovieDetail = useCallback(async () => {
     try {
-        const res = await fetch(`https://thehotpotato.store/movies/${id}/`);
+        const res = await fetch(`https://www.movielike.store/api/movies/${id}/`);
         const data = await res.json();
         setMovie(data);
     } catch (err) {
@@ -30,7 +30,7 @@ export default function Detail() {
         }
 
         try {
-            const res = await fetch(`https://thehotpotato.store/movies/${id}/comments/`, {
+            const res = await fetch(`https://www.movielike.store/api/movies/${id}/comments/`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

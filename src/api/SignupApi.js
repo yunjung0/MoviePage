@@ -1,19 +1,15 @@
 import api from './Api';
 
 //회원가입
-export const signup = async (email, password1,password2, username, nickname) => {
+export const signup = async (email, password1, password2, username, nickname) => {
   try {
-        const res = await api.post('/auth/registration/', {
-            email,
-            password1,
-            password2,
-            username,
-            nickname
-        });
-        return res.data;
-    } catch (err) {
-        throw err;
-    }
+    const res = await api.post("/auth/registration/",
+      { email, password1, password2, username, nickname }
+    );
+    return res.data;
+  } catch (err) {
+    throw err;
+  }
 };
 
 //로그인

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: " http://movielike.store/api",
+    baseURL: "https://www.movielike.store/api",
     headers: {
         'Content-Type': 'application/json',
     },
@@ -9,6 +9,14 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
+    // 회원가입, 로그인 요청에는 토큰을 붙이지 않음
+    if (
+      config.url === '/auth/registration/' ||
+      config.url === '/auth/login/'
+    ) {
+      delete config.headers.Authorization;
+      return config;
+    }
     const token = localStorage.getItem('access_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

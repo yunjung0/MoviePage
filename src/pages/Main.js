@@ -15,7 +15,7 @@ export default function Main() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await fetch("https://thehotpotato.store/movies/");
+        const res = await fetch("/movies/");
         const data = await res.json();
         console.log("받은 데이터:", data);
         setMovies(data);

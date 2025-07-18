@@ -48,7 +48,7 @@ export default function Detail() {
   // 댓글 작성
   const handleCommentSubmit = async () => {
     if (!isLoggedIn) {
-      navigate("/login");
+      navigate("/loginPage");
       return;
     }
 

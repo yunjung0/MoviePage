@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { signup } from '../api/SignupApi';
+import { Navigate } from 'react-router-dom';
 import '../components/Signup.css';
 
 
@@ -13,15 +14,20 @@ function Signup() {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const res = await signup(username, password1, password2, email, nickname);
-            console.log('회원가입 성공:', res);
-            alert('회원가입이 완료되었습니다! 로그인해주세요.');
-        } catch (err) {
-            console.log('회원가입 실패');
-            alert('회원가입에 실패했습니다. 다시 시도해주세요.');
-            console.log(err.response.data); // 서버에서 어떤 필드가 잘못됐는지 확인
-}
-        }
+    const res = await signup(email, password1, password2, username, nickname);
+    alert('회원가입이 완료되었습니다! 로그인해주세요.');
+    Navigate('/loginPage');
+} catch (err) {
+    console.log('회원가입 실패');
+    if (err.response && err.response.data) {
+        alert('회원가입에 실패했습니다: ' + JSON.stringify(err.response.data));
+        console.log(err.response.data);
+    } else {
+        alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+        console.log(err);
+    }
+} }
+
 
          return (
         <div className='box'>
@@ -45,7 +51,7 @@ function Signup() {
                     />
 
                     <input className='Input'
-                        type="text"
+                        type="password"
                         value={password1}
                         onChange={(e) => setPassword1(e.target.value)}
                         placeholder="비밀번호"
@@ -53,7 +59,7 @@ function Signup() {
                     />
 
                     <input className='Input'
-                        type="text"
+                        type="password"
                         value={password2}
                         onChange={(e) => setPassword2(e.target.value)}
                         placeholder="비밀번호"
@@ -61,7 +67,7 @@ function Signup() {
                     />
 
                     <input className='Input'
-                        type="nickname"
+                        type="text"
                         value={nickname}
                         onChange={(e) => setNickname(e.target.value)}
                         placeholder="닉네임"

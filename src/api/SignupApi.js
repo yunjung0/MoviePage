@@ -20,9 +20,9 @@ export const signup = async (email, password1,password2, username, nickname) => 
 export const login = async (email, password) => {
   try {
     const res = await api.post('/auth/login/', { email, password });
-    if (res.data && res.data.access_token && res.data.refresh_token) {
-      localStorage.setItem('access_token', res.data.access_token);
-      localStorage.setItem('refresh_token', res.data.refresh_token);
+    if (res.data && res.data.access) {
+      localStorage.setItem('access_token', res.data.access);
+      localStorage.setItem('refresh_token', res.data.refresh);
     }
     return res.data;
   } catch (err) {

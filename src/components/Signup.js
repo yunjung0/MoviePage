@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { signup } from '../api/SignupApi';
-import { Navigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import '../components/Signup.css';
 
 
@@ -11,12 +11,14 @@ function Signup() {
     const [email, setEmail] = useState('');
     const [nickname, setNickname] = useState('');
 
+    const navigate = useNavigate();
+
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
     const res = await signup(email, password1, password2, username, nickname);
     alert('회원가입이 완료되었습니다! 로그인해주세요.');
-    Navigate('/loginPage');
+    navigate('/loginPage');
 } catch (err) {
     console.log('회원가입 실패');
     if (err.response && err.response.data) {

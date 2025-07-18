@@ -19,10 +19,10 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-    (response) => response,
+    (res) => res,
     (error) => {
-        if (error.response?.status === 401) {
-            localStorage.removeItem('token');
+        if (error.res?.status === 401) {
+            localStorage.removeItem('access_token');
             window.location.href = '/loginPage';
         }
         return Promise.reject(error);

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import MovieList from "../api/MoviesApi";
 
 export default function MovieCard({ movie }) {
   

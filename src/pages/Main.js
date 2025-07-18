@@ -39,10 +39,13 @@ export default function Main() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await fetch("/movies/");
+        const res = await fetch("https://www.movielike.store/api/movies/");
         const data = await res.json();
-        console.log("받은 데이터:", data);
-        setMovies(data);
+        console.log('영화 데이터:',data.results);
+        setMovies(data.results);
+        setTotalCount(data.count);
+        // console.log("받은 데이터:", data);
+        // setMovies(data);
       } catch (err) {
         console.error("영화 목록 불러오기 실패:", err);
       }
@@ -93,7 +96,7 @@ export default function Main() {
 
       <div className="movie-grid">
       {pagedMovies.map((movie, index) => (
-        <MovieCard key={index} movie={movie} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
       </div>
       <Pagination

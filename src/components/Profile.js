@@ -33,7 +33,8 @@ function UserProfile() {
 
   return (
     <div className="UserProfile">
-      <h2>사용자 프로필</h2>
+      <div className='profile-box'>
+        <h2>사용자 프로필</h2>
       <p><b>아이디:</b> {profile.username}</p>
       <p>
         <b>닉네임:</b>
@@ -49,10 +50,11 @@ function UserProfile() {
         ) : (
           <>
             {profile.nickname}
-            <button onClick={() => setEditing(true)}>수정</button>
+            <button onClick={() => setEditing(true)} className='profile-button'>수정</button>
           </>
         )}
       </p>
+      </div>
     </div>
   );
 }

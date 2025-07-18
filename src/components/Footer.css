@@ -10,12 +10,6 @@
   margin-top: 30px;
 }
 
-/* .footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-} */
 
 .footer-box{
   display: flex;
@@ -24,22 +18,6 @@
   flex-wrap: wrap;
 }
 
-/* .footer-details {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: flex-start
-} */
-
-/* .footer-links {
-  display: inline-flex;
-  text-align: center;
-  gap: 10px;
-}
-
-.footer-links a {
-  color: #9f9f9f;
-} */
 
 .footer-date p{
   text-align: center;

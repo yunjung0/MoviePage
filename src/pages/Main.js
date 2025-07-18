@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
+import { useNavigate } from "react-router-dom"
 import "./Main.css";
 
 export default function Main() {
@@ -9,8 +10,31 @@ export default function Main() {
   const [page, setPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const pagedMovies = movies.slice((page - 1) * 10, page * 10);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [searchTitle, setSearchTitle] = useState("");
+  const navigate = useNavigate();
+
 
   
+
+  const handleTitleSearch = async () => {
+    const trimmedTitle = searchTitle.trim().toLowerCase();
+    if (!trimmedTitle) return;
+  
+    const foundMovie = movies.find(
+    (movie) =>
+      movie.title_kor?.toLowerCase() === trimmedTitle ||
+      movie.title_eng?.toLowerCase() === trimmedTitle
+  );
+
+  if (foundMovie) {
+    setSelectedMovie(foundMovie);
+  } else {
+    setSelectedMovie(null);
+    alert("해당 제목의 영화를 찾을 수 없습니다.");
+  }
+};
+
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -36,7 +60,7 @@ export default function Main() {
   };
 
  
-  return (
+    return (
     <div>
       <div className="search-bar">
         <div className="search-wrapper">
@@ -44,12 +68,29 @@ export default function Main() {
           className="search-input"
           type="text"
           placeholder="영화 제목을 입력하세요"
-          value={search}
-          onChange={handleSearch}
+          value={searchTitle}
+          onChange={(e) => setSearchTitle(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleTitleSearch();
+          }}
         />
         <span className="search-icon" onClick={() => setPage(1)}>🔍</span>
         </div>
       </div>
+      {selectedMovie && (
+      <div className="selected-movie">
+        <h2>🎬 검색된 영화</h2>
+        <img
+          src={selectedMovie.poster_url || "https://via.placeholder.com/200x300?text=No+Image"}
+          alt={selectedMovie.title_kor}
+          className="selected-movie-poster"
+          onClick={() => navigate(`/movie/${selectedMovie.id}`)} // 클릭 시 이동
+          style={{ cursor: "pointer" }}
+        />
+        <h3>{selectedMovie.title_kor} ({selectedMovie.title_eng})</h3>
+      </div>
+      )}
+
       <div className="movie-grid">
       {pagedMovies.map((movie, index) => (
         <MovieCard key={index} movie={movie} />

@@ -18,7 +18,7 @@ export default function Navigationbar() {
 
   return (
     <nav className="Navigation">
-      <div className="logo"><Link to='/' style={{ textDecoration: "none"}}>부귀영화</Link></div>
+      <div className="logo"><Link to='/' style={{ textDecoration: "none"}} className="topic" >BoogieMovie</Link></div>
       <ul>
         {authenticated ? (
           <li>

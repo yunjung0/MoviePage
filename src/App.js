@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Navigationbar from './components/Navigation';
 import UserProfile from './components/Profile';
 import Detail from "./pages/Detail";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/loginPage' element= {<Login />} />
         <Route path='/profilePage' element= {<UserProfile />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

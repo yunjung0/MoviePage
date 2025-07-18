@@ -7,6 +7,8 @@ export default function Detail() {
     const navigate = useNavigate();
     const [movie, setMovie] = useState(null);
     const [newComment, setNewComment] = useState('');
+    const [userRating, setUserRating] = useState(0);  
+    const [hoverRating, setHoverRating] = useState(0);
     const isLoggedIn = localStorage.getItem("token") !== null;
 
     const fetchMovieDetail = useCallback(async () => {
@@ -53,6 +55,26 @@ export default function Detail() {
     };
     
     if (!movie) return <div>로딩 중...</div>;
+    
+    const handleRatingSubmit = async () => {
+        try {
+          const res = await fetch(`https://thehotpotato.store/movies/${id}/rating/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            body: JSON.stringify({ rating: userRating }),
+          });
+          if (res.ok) {
+            alert("별점이 등록되었습니다!");
+            fetchMovieDetail(); 
+          }
+        } catch (err) {
+          console.error("별점 제출 실패:", err);
+        }
+      };
+      
 
     return (
         <div className="movie-detail">
@@ -96,7 +118,27 @@ export default function Detail() {
                 </div>
             </div>
             <div className="comment-section">
-                <h3>🗯 Comment</h3>
+                <h2>🗯 Comment</h2>
+                <div className="rating-section">
+                    <h3 className='choose'>별점을 선택해주세요.</h3>
+                    <div className="star-rating">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                            <span
+                                key={star}
+                                className={star <= (hoverRating || userRating) ? "on" : "off"}
+                                onClick={() => setUserRating(star)}
+                                onMouseEnter={() => setHoverRating(0)}
+                                onMouseLeave={() => setHoverRating(0)}
+                            >
+                                ★
+                            </span>
+                        ))}
+                        
+                        <button className="starbutton" onClick={handleRatingSubmit}>별점 등록</button>
+                    </div>
+                    
+
+                </div>
                 {movie.comments?.length > 0 ? (
                     movie.comments.map((comment) => (
                         <div key={comment.id} >
@@ -121,7 +163,7 @@ export default function Detail() {
                     <p>
                         댓글을 작성하려면{" "}
                         <span
-                            style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
+                            style={{ color: "white", cursor: "pointer", textDecoration: "underline"}}
                             onClick={() => navigate("/loginPage")}
                         >
                             로그인

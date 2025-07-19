@@ -17,7 +17,7 @@ export const login = async (email, password) => {
   try {
     const res = await api.post('/auth/login/', { email, password });
     if (res.data && res.data.access) {
-      localStorage.setItem('access_token', res.data.access);
+      localStorage.setItem('token', res.data.access);
       localStorage.setItem('refresh_token', res.data.refresh);
     }
     return res.data;

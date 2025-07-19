@@ -1,6 +1,7 @@
 import React, { useEffect, useState,useCallback } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import './Detail.css';
+import CommentSection from '../components/Comment';
 
 export default function Detail() {
     const { id } = useParams();
@@ -95,41 +96,8 @@ export default function Detail() {
 
                 </div>
             </div>
-            <div className="comment-section">
-                <h3>🗯 Comment</h3>
-                {movie.comments?.length > 0 ? (
-                    movie.comments.map((comment) => (
-                        <div key={comment.id} >
-                            <strong>{comment.user.username}</strong>: {comment.content}
-                        </div>
-                    ))
-                ) : (
-                    <p>아직 댓글이 없습니다.</p>
-                )}
-
-                {isLoggedIn ? (
-                    <div className='comment-form'>
-                        <input
-                            type='test'
-                            placeholder='댓글을 입력하세요'
-                            value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
-                        />
-                        <button onClick={handleCommentSubmit}>Post</button>
-                    </div>
-                ) : (
-                    <p>
-                        댓글을 작성하려면{" "}
-                        <span
-                            style={{ color: "blue", cursor: "pointer", textDecoration: "underline" }}
-                            onClick={() => navigate("/loginPage")}
-                        >
-                            로그인
-                        </span>
-                        해주세요.
-                    </p>
-                )}
-            </div>
+            
+            <CommentSection movieId={id} isLoggedIn={isLoggedIn} />
         </div>
     );
 }

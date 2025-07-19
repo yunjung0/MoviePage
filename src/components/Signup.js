@@ -18,6 +18,7 @@ function Signup() {
         try {
     const res = await signup(email, password1, password2, username, nickname);
     alert('회원가입이 완료되었습니다! 로그인해주세요.');
+    console.log('회원가입 완료');
     navigate('/loginPage');
 } catch (err) {
     console.log('회원가입 실패');

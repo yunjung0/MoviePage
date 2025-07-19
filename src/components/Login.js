@@ -17,6 +17,7 @@ function Login() {
             const res = await login(email, password);
             console.log('로그인 성공:', res);
             alert('로그인 성공!');
+            window.dispatchEvent(new Event("authChanged"));
             navigate('/')
         } catch (err) {
             alert('로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.');

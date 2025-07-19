@@ -10,17 +10,20 @@ export default function Navigationbar() {
   const handleLogout = async () => {
     try {
       await logout();
-      setAuthenticated(false); // 상태 갱신
-      navigate('/loginPage');
+      setAuthenticated(false);
+      window.dispatchEvent(new Event("authChanged"));
+      navigate('/');
     } catch (err) {
-      setAuthenticated(false); // 상태 갱신
+      setAuthenticated(false);
+      window.dispatchEvent(new Event("authChanged"));
       navigate('/loginPage');
     }
   };
 
-
   useEffect(() => {
-    setAuthenticated(isAuthenticated());
+    const updateAuth = () => setAuthenticated(isAuthenticated());
+    window.addEventListener("authChanged", updateAuth);
+    return () => window.removeEventListener("authChanged", updateAuth);
   }, []);
 
   return (

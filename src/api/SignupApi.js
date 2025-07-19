@@ -30,14 +30,14 @@ export const login = async (email, password) => {
 // 로그아웃
 export const logout = async () => {
   await api.post('/auth/logout/');
-  localStorage.removeItem('access_token');
+  localStorage.removeItem('token');
   localStorage.removeItem('refresh_token');
 };
 
 
 // 현재 로그인 상태 확인
 export const isAuthenticated = () => {
-    return !!localStorage.getItem('access_token');
+    return !!localStorage.getItem('token');
 };
 
 // 프로필 조회 (현재 로그인된 사용자)

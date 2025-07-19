@@ -1,0 +1,40 @@
+.comment-section {
+  width: 100%;
+  margin-top: 65px;
+  padding-left: 45px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.comment-box{
+  margin-top: 10px;
+  width: 95%;
+  height: 50px;
+  border-radius: 8px;
+}
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 600px;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.comment-form button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #333;
+}

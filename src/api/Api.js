@@ -17,7 +17,7 @@ api.interceptors.request.use(
       delete config.headers.Authorization;
       return config;
     }
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -30,7 +30,7 @@ api.interceptors.response.use(
     (res) => res,
     (error) => {
         if (error.res?.status === 401) {
-            localStorage.removeItem('access_token');
+            localStorage.removeItem('token');
             window.location.href = '/loginPage';
         }
         return Promise.reject(error);

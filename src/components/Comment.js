@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './Comment.css';
 
 export default function CommentSection({ movieId, isLoggedIn }) {
   const [comments, setComments] = useState([]);
@@ -77,13 +78,12 @@ export default function CommentSection({ movieId, isLoggedIn }) {
         <div>아직 댓글이 없습니다.</div>
       )}
       {isLoggedIn ? (
-        <div style={{ marginTop: 10 }}>
-          <textarea
+        <div>
+          <textarea className="comment-box"
             placeholder="댓글을 입력하세요"
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             rows={2}
-            style={{ width: "90%" }}
           />
           <div style={{ margin: "8px 0" }}>
             <span>별점:&nbsp;</span>

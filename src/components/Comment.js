@@ -7,6 +7,7 @@ export default function CommentSection({ movieId, isLoggedIn }) {
   const [rating, setRating] = useState(5);
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
     (async () => {
       setLoading(true);
@@ -19,8 +20,12 @@ export default function CommentSection({ movieId, isLoggedIn }) {
               : undefined,
           }
         );
-        const data = await res.json();
-        setComments(data);
+        if (res.ok) {
+          const data = await res.json();
+          setComments(data);
+        } else {
+          setComments([]);
+        }
       } catch (e) {
         setComments([]);
       } finally {
@@ -67,7 +72,7 @@ export default function CommentSection({ movieId, isLoggedIn }) {
       ) : comments.length > 0 ? (
         comments.map((comment) => (
           <div key={comment.id} style={{ marginBottom: 8 }}>
-            <strong>{comment.author?.username || "익명"}</strong>
+            <strong>{comment.author?.nickname || comment.author?.username || "익명"}</strong>
             &nbsp;|&nbsp;
             <span>{"⭐".repeat(comment.rating || 0)}</span>
             <br />
